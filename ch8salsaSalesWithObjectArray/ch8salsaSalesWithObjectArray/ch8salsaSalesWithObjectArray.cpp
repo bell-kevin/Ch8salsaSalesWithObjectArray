@@ -53,7 +53,14 @@ public:
 }; // end class Product
 
 //prototype
-void displaySales(Product salsa[], int size);
+//totalSalsaSales function
+int totalSalsaSales(Product salsa[], int size);
+//highestSalsaSales function
+int highestSalsaSales(Product salsa[], int size);
+//lowestSalsaSales function
+int lowestSalsaSales(Product salsa[], int size);
+// displaySalsaSalesReport function
+void displaySalsaSalesReport(Product salsa[], int size);
 
 const int NUM_SALSAS = 5;
 int main()
@@ -83,21 +90,76 @@ int main()
 		std::cout << salsa[i].salsaName << ": ";
 		std::cin >> salsa[i].salsaSales;
 	} // end for loop
-	//display sales report function
-	displaySales(salsa, NUM_SALSAS);
+	cout << endl;
+	// display salsa sales report
+	displaySalsaSalesReport(salsa, NUM_SALSAS);
+	cout << endl;
+	// total salsa sales
+	totalSalsaSales(salsa, NUM_SALSAS);
+	// highest salsa sales
+	highestSalsaSales(salsa, NUM_SALSAS);
+	// lowest salsa sales
+	lowestSalsaSales(salsa, NUM_SALSAS);
+	system("pause");
+	return 0;
 } // end main
 
-// function definitions
-void displaySalesReport(Product salsa[])
+// functions
+
+//totalSalsaSales function
+int totalSalsaSales(Product salsa[], int size)
 {
-	//display sales report
-	std::cout << "Sales Report \n";
-	std::cout << "Name\t\tSales\n";
-	std::cout << "--------------------------\n";
-	for (int i = 0; i < NUM_SALSAS; i++)
+	int totalSales = 0;
+	for (int i = 0; i < size; i++)
 	{
-		std::cout << salsa[i].salsaName << "\t\t" << salsa[i].salsaSales << "\n";
+		totalSales += salsa[i].salsaSales;
 	} // end for loop
-} // end displaySalesReport
+	std::cout << "Total jars sold: " << totalSales << endl;
+	return totalSales;
+} // end totalSalsaSales
 
+//highestSalsaSales function
+int highestSalsaSales(Product salsa[], int size)
+{
+	int highestSales = 0;
+	string highestSalsa = " ";
+	for (int i = 0; i < size; i++)
+	{
+		if (salsa[i].salsaSales > highestSales)
+		{
+			highestSales = salsa[i].salsaSales;
+			highestSalsa = salsa[i].salsaName;
+		} // end if
+	} // end for loop
+	std::cout << "High seller: " << highestSalsa << " with " << highestSales << " jars sold.\n";
+	return highestSales;
+} // end highestSalsaSales
 
+//lowestSalsaSales function
+int lowestSalsaSales(Product salsa[], int size)
+{
+	int lowestSales = 100000;
+	string lowestSalsa = " ";
+	for (int i = 0; i < size; i++)
+	{
+		if (salsa[i].salsaSales < lowestSales)
+		{
+			lowestSales = salsa[i].salsaSales;
+			lowestSalsa = salsa[i].salsaName;
+		} // end if
+	} // end for loop
+	std::cout << "Low seller: " << lowestSalsa << " with " << lowestSales << " jars sold.\n";
+	return lowestSales;
+} // end lowestSalsaSales
+
+// displaySalsaSalesReport function
+void displaySalsaSalesReport(Product salsa[], int size)
+{
+	std::cout << "Salsa Sales Report\n\n";
+	std::cout << "Name\t\tJars Sold\n\n";
+	std::cout << "--------------------------\n";
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << salsa[i].salsaName << "\t\t" << salsa[i].salsaSales << endl;
+	} // end for loop
+} // end displaySalsaSalesReport
