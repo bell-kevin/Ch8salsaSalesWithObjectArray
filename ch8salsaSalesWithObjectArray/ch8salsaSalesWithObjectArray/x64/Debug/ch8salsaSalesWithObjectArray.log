@@ -1,0 +1,3 @@
+﻿  ch8salsaSalesWithObjectArray.cpp
+ch8salsaSalesWithObjectArray.obj : error LNK2019: unresolved external symbol "void __cdecl displaySales(class Product * const,int)" (?displaySales@@YAXQEAVProduct@@H@Z) referenced in function main
+C:\Users\4800590195\source\repos\ch8salsaSalesWithObjectArray\x64\Debug\ch8salsaSalesWithObjectArray.exe : fatal error LNK1120: 1 unresolved externals
